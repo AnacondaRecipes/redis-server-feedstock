@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# Linking in modules/tests is flawed
+export LDFLAGS=""
+
 make BUILD_TLS=yes
-make PREFIX=$PREFIX install
+make PREFIX="${PREFIX}" install
 
 mkdir -p "${PREFIX}/etc"
-
 mkdir -p "${PREFIX}/var/run/redis"
 mkdir -p "${PREFIX}/var/db/redis"
 
