@@ -1,0 +1,35 @@
+From 45393724ee06d09cd4871d352705a0e9627f597e Mon Sep 17 00:00:00 2001
+From: Ivan Iziumov <iiziumov@anaconda.com>
+Date: Wed, 3 Dec 2025 14:03:19 +0100
+Subject: [PATCH] fix tests overriding CC
+
+---
+ tests/modules/Makefile | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/modules/Makefile b/tests/modules/Makefile
+index cdba67aff..1c0f49c2c 100644
+--- a/tests/modules/Makefile
++++ b/tests/modules/Makefile
+@@ -27,12 +27,12 @@ endif
+ 
+ # This is a hack to override the default CC. When running with SANITIZER=memory
+ # tough we want to keep the compiler as clang as MSan is not supported for gcc
+-ifeq ($(uname_S),Linux)
+-ifneq ($(SANITIZER),memory)
+-	LD = gcc
+-	CC = gcc
+-endif
+-endif
++# ifeq ($(uname_S),Linux)
++# ifneq ($(SANITIZER),memory)
++# 	LD = gcc
++# 	CC = gcc
++# endif
++# endif
+ 
+ # OS X 11.x doesn't have /usr/lib/libSystem.dylib and needs an explicit setting.
+ ifeq ($(uname_S),Darwin)
+-- 
+2.51.0
+
