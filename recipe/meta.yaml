@@ -1,5 +1,5 @@
 {% set name = "redis-server" %}
-{% set version = "8.4.0" %}
+{% set version = "8.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/redis/redis/archive/refs/tags/{{ version }}.tar.gz
-  sha256: b947d9015622669b5bee8ec954f658b3278d42dbefae23a92d9b7704bfe143f9
+  sha256: 19736ce6117d90b3df032504c6e5c1ce41667ae47f073281b40d2f274c200a74
   patches:  # [linux]
     - patches/0001-fix-tests-overriding-CC.patch  # [linux]
 
