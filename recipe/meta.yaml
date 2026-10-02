@@ -14,10 +14,6 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  missing_dso_whitelist:
-    - '*/libssl.3.dylib'
-    - '*/libcrypto.3.dylib'
-
 
 requirements:
   build:
@@ -28,10 +24,8 @@ requirements:
     - pkg-config
   host:
     - openssl {{ openssl }}
-    - jemalloc {{ jemalloc }}
   run:
     - openssl
-    - jemalloc
 
 test:
   commands:
