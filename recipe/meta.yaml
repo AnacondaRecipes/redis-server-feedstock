@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/redis/redis/archive/refs/tags/{{ version }}.tar.gz
   sha256: 541a374b753a8405683dd88560465791acc98cf09445ef10ec1bd286904273e8
-  patches:  # [linux]
-    - patches/0001-fix-tests-overriding-CC.patch  # [linux]
 
 build:
   number: 0
