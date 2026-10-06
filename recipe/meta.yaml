@@ -1,5 +1,5 @@
 {% set name = "redis-server" %}
-{% set version = "8.8.0" %}
+{% set version = "8.10.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,31 +7,23 @@ package:
 
 source:
   url: https://github.com/redis/redis/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 19736ce6117d90b3df032504c6e5c1ce41667ae47f073281b40d2f274c200a74
-  patches:  # [linux]
-    - patches/0001-fix-tests-overriding-CC.patch  # [linux]
+  sha256: 541a374b753a8405683dd88560465791acc98cf09445ef10ec1bd286904273e8
 
 build:
   number: 0
   skip: true  # [win]
-  missing_dso_whitelist:
-    - '*/libssl.3.dylib'
-    - '*/libcrypto.3.dylib'
-
 
 requirements:
   build:
-    - {{ stdlib("c") }}
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - make
     - pkg-config
   host:
     - openssl {{ openssl }}
-    - jemalloc {{ jemalloc }}
   run:
     - openssl
-    - jemalloc
 
 test:
   commands:
@@ -42,6 +34,7 @@ about:
   home: https://redis.io
   license: SSPL-1.0 OR LicenseRef-RSALv2
   license_file: LICENSE.txt
+  license_family: OTHER
   summary: Advanced key-value cache and store
   description: |
     Redis is an in-memory database that persists on disk. The data model
